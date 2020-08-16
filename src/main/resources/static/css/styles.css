@@ -1,0 +1,47 @@
+body{
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#mainNav{
+    background-color: #a6c;
+}
+
+footer{
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+main{
+    margin-top: 20px;
+}
+
+#add__new__expenditure{
+    /*width: 240px;*/
+}
+
+a{
+    margin-left: 10px;
+}
+
+.filter input{
+    margin-left: 10px;
+}
+
+#maxRows{
+    margin: 0 5px;
+}
+
+#userDropdown{
+    float: right;
+}
+
+.dropdown-item{
+    width: 90%;
+}
+
+.img-profile{
+    width: 30px;
+    height: 30px;
+}
+

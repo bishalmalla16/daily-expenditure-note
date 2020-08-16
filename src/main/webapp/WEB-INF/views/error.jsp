@@ -19,7 +19,7 @@
     <ul class="page-breadcrumb row">
         <li>
             <i class="fa fa-home"></i>
-            <a href="${pageContext.request.contextPath}/">Home</a>
+            <a href="${pageContext.request.contextPath}/home">Home</a>
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
@@ -37,11 +37,11 @@
             <h3>${errorMap.message}</h3>
             <p>
                 Need permission?<br/>
-                <a href="#"> Please contact admin.</a>
+                <a href="${pageContext.request.contextPath}/#contact"> Please contact admin.</a>
             </p>
         </div>
     </div>
 </div>
-
+<%@include file="footer.jsp"%>
 </body>
 </html>
