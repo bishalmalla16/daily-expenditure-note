@@ -43,7 +43,12 @@ public class SecurityBeanConfig {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/login", "authc");
         chainDefinition.addPathDefinition("/logout", "logout");
+        chainDefinition.addPathDefinition("/home", "authc, roles[user]");
+        chainDefinition.addPathDefinition("/edit-user", "authc, roles[user]");
+        chainDefinition.addPathDefinition("/view-user", "authc, roles[user]");
         chainDefinition.addPathDefinition("/expenditures", "authc, roles[user]");
+        chainDefinition.addPathDefinition("/edit-expenditures", "authc, roles[user]");
+        chainDefinition.addPathDefinition("/delete-expenditures", "authc, roles[user]");
         
         return chainDefinition;
     }
