@@ -43,6 +43,7 @@ public class SecurityBeanConfig {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/login", "authc");
         chainDefinition.addPathDefinition("/logout", "logout");
+        chainDefinition.addPathDefinition("/admin", "authc, roles[admin]");
         chainDefinition.addPathDefinition("/roles", "authc, roles[admin]");
         chainDefinition.addPathDefinition("/home", "authc, roles[user]");
         chainDefinition.addPathDefinition("/users", "authc, roles[admin]");

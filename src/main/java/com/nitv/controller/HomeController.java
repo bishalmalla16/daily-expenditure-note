@@ -1,6 +1,9 @@
 package com.nitv.controller;
 
 import com.nitv.model.Expenditure;
+import com.nitv.model.User;
+import com.nitv.service.ExpenditureService;
+import com.nitv.service.RoleService;
 import com.nitv.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -24,7 +27,13 @@ public class HomeController {
     Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
+    private ExpenditureService expenditureService;
+
+    @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/")
     public String homePage(Model model){
@@ -41,6 +50,25 @@ public class HomeController {
         model.addAttribute("expenditure", new Expenditure());
         model.addAttribute("priceError", "");
         return "home";
+    }
+
+    @RequestMapping("/admin")
+    public String adminPage(Model model){
+        model.addAttribute("subject", SecurityUtils.getSubject());
+        List<User> userList = userService.getAllUsers();
+        int totalUsers = userList.size();
+        int usersTillDate = 0;
+        for (User user:userList) {
+            if(usersTillDate < user.getId())
+                usersTillDate = user.getId();
+        }
+        model.addAttribute("totalUsers", totalUsers);
+        model.addAttribute("usersTillDate", usersTillDate);
+        int totalExpenditures = expenditureService.getExpendituresSize();
+        model.addAttribute("averageExpenditures", totalExpenditures/totalUsers);
+        int totalRoles = roleService.getRoles().size();
+        model.addAttribute("totalRoles", totalRoles);
+        return "admin_panel";
     }
 
     @RequestMapping("/login")
